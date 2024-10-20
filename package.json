@@ -1,0 +1,15 @@
+{
+  "name": "goblin-game",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack serve"
+  },
+  "devDependencies": {
+    "css-loader": "^6.x.x",
+    "style-loader": "^3.x.x",
+    "webpack": "^5.x.x",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.x.x"
+  }
+}
