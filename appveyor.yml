@@ -8,7 +8,7 @@ build_script:
   - yarn run build
 deploy:
   provider: GitHub
-  auth_token: GOBLIN-GAME
-  repository: Mikhail5509/goblin-game # замените на ваше имя пользователя и название репозитория
-  branch: master
+  auth_token: %GITHUB_TOKEN% # Используйте переменную окружения
+  repository: Mikhail5509/goblin-game # Ваше имя пользователя и название репозитория
+  branch: main # Проверьте, что это правильная ветка
   on_success: true
