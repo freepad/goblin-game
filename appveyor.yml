@@ -1,0 +1,13 @@
+version: 1.0.{build}
+image: Visual Studio 2019
+configuration: Release
+platform:
+  - x64
+build_script:
+  - yarn install
+  - yarn run build
+deploy:
+  provider: GitHub
+  repository: Mikhail5509/goblin-game # замените на ваше имя пользователя и название репозитория
+  branch: master
+  on_success: true
