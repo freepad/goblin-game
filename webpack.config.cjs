@@ -1,50 +1,46 @@
-const path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  target: "web",
-  entry: "./src/js/game.js",  // Убедитесь, что файл index.js существует в папке src
+  entry: './src/js/game.js',  // Это точка входа вашего проекта
   output: {
-    filename: "bundle.js",  // Выходной файл для вашего JS
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',  // Название файла, который Webpack создаст
+    publicPath: '',
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        use: 'babel-loader', // Для транспиляции JS, если используете ES6/JSX
       },
       {
         test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader",
-          },
-        ],
+        use: 'html-loader', // Для обработки HTML
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'], // Для работы с CSS
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
+        type: 'asset/resource', // Для работы с изображениями
       },
     ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",  // Убедитесь, что файл index.html существует в папке src
-      filename: "./index.html",
+      template: './src/index.html', // Используем ваш index.html как шаблон
+      filename: 'index.html',  // Он будет скомпилирован в dist/index.html
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css",
+      filename: '[name].css', // Скомпилированный CSS файл
+      chunkFilename: '[id].css',
     }),
   ],
+  resolve: {
+    extensions: ['.js'],  // Поддержка расширений для JS
+  },
 };
