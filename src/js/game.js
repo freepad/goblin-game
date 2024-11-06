@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Goblin from './goblin.js';
 import Score from './score.js';
 
