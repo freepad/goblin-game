@@ -7,7 +7,9 @@
     "build": "webpack --mode production"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.0",
     "@eslint/js": "^9.14.0",
+    "babel-jest": "^29.7.0",
     "css-loader": "^7.1.2",
     "eslint": "^9.14.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -23,11 +25,19 @@
     "style-loader": "^4.0.0",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.1.0"
+    "webpack-dev-server": "^5.1.0",
+    "babel-loader": "^9.1.0",
+    "@babel/core": "^7.28.0"
   },
   "type": "module",
   "main": "index.js",
   "repository": "https://github.com/Mikhail5509/goblin-game.git",
   "author": "Mikhail Ignatov <ignatov.m55@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "testEnvironment": "node"
+  }
 }
