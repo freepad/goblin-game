@@ -7,8 +7,9 @@
     "build": "webpack --mode production"
   },
   "devDependencies": {
+    "@eslint/js": "^9.14.0",
     "css-loader": "^7.1.2",
-    "eslint": "8",
+    "eslint": "^9.14.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -16,10 +17,15 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "file-loader": "^6.2.0",
     "gh-pages": "^6.2.0",
+    "globals": "^15.12.0",
     "style-loader": "^4.0.0",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
   },
-  "type": "module"
+  "type": "module",
+  "main": "index.js",
+  "repository": "https://github.com/Mikhail5509/goblin-game.git",
+  "author": "Mikhail Ignatov <ignatov.m55@gmail.com>",
+  "license": "MIT"
 }
