@@ -1,39 +1,48 @@
-const path = require('path');
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: './src/js/game.js',
+  target: "web",
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "",
   },
-  mode: 'development',
-  devtool: 'inline-source-map',
   module: {
     rules: [
-      // Обработка CSS файлов
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      // Обработка изображений
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        type: 'asset/resource',
-      },
-      // Обработка JavaScript с использованием Babel
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'], // Поддержка современных JavaScript фич
-          },
+          loader: "babel-loader",
         },
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
       },
     ],
   },
-  devServer: {
-    static: './dist',
-  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html",
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css",
+    }),
+  ],
 };
