@@ -1,48 +1,25 @@
-// src/js/score.js
+export default class Score {
+    constructor() {
+        this.score = 0;
+        this.missed = 0;
+        this.scoreDisplay = document.getElementById('score-display');
+        this.updateDisplay();
+    }
 
-class Score {
-  constructor() {
-      this.points = 0;
-      this.missed = 0;
-      this.scoreElement = document.createElement('div');
-      this.scoreElement.className = 'score'; // добавьте нужные стили
-      document.body.appendChild(this.scoreElement);
-      this.updateScore();
-  }
+    // Увеличить счет
+    increase() {
+        this.score++;
+        this.updateDisplay();
+    }
 
-  // Увеличить счет
-  increase() {
-      this.points++;
-      this.updateScore();
-  }
+    // Увеличить пропуски
+    miss() {
+        this.missed++;
+        this.updateDisplay();
+    }
 
-  // Увеличить количество пропусков
-  miss() {
-      this.missed++;
-      this.updateScore();
-      if (this.missed >= 5) {
-          this.endGame(); // Вызов метода завершения игры
-      }
-  }
-
-  // Обновить отображение счета
-  updateScore() {
-      this.scoreElement.innerText = `Очки: ${this.points} Пропуски: ${this.missed}`;
-  }
-
-  // Метод для завершения игры
-  endGame() {
-      alert(`Игра окончена! Ваш счет: ${this.points}`);
-      this.reset(); // Сброс счета
-      // Здесь можно добавить логику для перезапуска игры, если это необходимо
-  }
-
-  // Сбросить счет
-  reset() {
-      this.points = 0;
-      this.missed = 0;
-      this.updateScore();
-  }
+    // Обновить отображение счета
+    updateDisplay() {
+        this.scoreDisplay.innerHTML = `Счет: ${this.score} | Пропущено: ${this.missed}`;
+    }
 }
-
-export default Score;

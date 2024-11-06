@@ -1,35 +1,22 @@
-class Goblin {
-  constructor(container) {
-      this.element = document.createElement('div');
-      this.element.className = 'goblin';
-      container.appendChild(this.element); // Добавляем гоблина в контейнер
-      this.isVisible = false; // Статус видимости
-  }
+// goblin.js
+export default class Goblin {
+    constructor() {
+        this.element = document.createElement('div');
+        this.element.classList.add('goblin'); // Добавление CSS класса для стилизации
+        document.getElementById('game-area').appendChild(this.element); // Добавляем элемент в игровую область
+    }
 
-  // Показать гоблина в случайной позиции внутри контейнера
-  appear() {
-      const x = Math.random() * (this.element.parentNode.clientWidth - 100); 
-      const y = Math.random() * (this.element.parentNode.clientHeight - 100);
-      this.element.style.left = `${x}px`;
-      this.element.style.top = `${y}px`;
-      this.element.style.display = 'block';
-      this.isVisible = true; // Обновляем статус видимости
+    // Метод для появления гоблина
+    appear() {
+        this.element.style.display = 'block'; // Показываем гоблина
+        this.element.style.position = 'absolute'; // Устанавливаем позицию
+        // Случайное размещение гоблина в пределах игрового экрана
+        this.element.style.left = `${Math.random() * 90}vw`;
+        this.element.style.top = `${Math.random() * 90}vh`;
+    }
 
-      setTimeout(() => {
-          this.disappear();
-      }, 1000); // Исчезает через 1 секунду
-  }
-
-  // Скрыть гоблина
-  disappear() {
-      this.element.style.display = 'none';
-      this.isVisible = false; // Обновляем статус видимости
-  }
-
-  // Удалить элемент гоблина из DOM
-  remove() {
-      this.element.remove();
-  }
+    // Метод для скрытия гоблина
+    disappear() {
+        this.element.style.display = 'none'; // Скрываем гоблина
+    }
 }
-
-export default Goblin;
