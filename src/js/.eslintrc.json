@@ -1,0 +1,20 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest/globals": true  // Указывает, что глобальные переменные Jest должны быть доступны
+  },
+  "extends": [
+    "airbnb-base",  // Использует конфигурацию Airbnb для JavaScript
+    "plugin:jest/recommended"  // Включает рекомендованные правила для Jest
+  ],
+  "plugins": [
+    "jest"  // Подключает плагин Jest для обработки специфичных правил
+  ],
+  "rules": {
+    // Добавьте свои кастомные правила или переопределения, если необходимо
+    "no-unused-vars": ["warn"],
+    "no-console": "off"
+  }
+}
